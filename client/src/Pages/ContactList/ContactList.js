@@ -16,7 +16,7 @@ const ContactList = () => {
     <h2>loading</h2>
   ) : (
     <div>
-      {contactsToFind.map((contact) => (
+      { contactsToFind.map((contact) => (
         <ContactCard contact={contact} key={contact.id} />
       ))}
     </div>

@@ -29,8 +29,10 @@ const AddEditContact = () => {
   const handleChange = (e) => {
     setNewContact({ ...newContact, [e.target.name]: e.target.value });
   };
+  console.log(edit)
   return (
     <div>
+      
       <Form>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Name</Form.Label>
