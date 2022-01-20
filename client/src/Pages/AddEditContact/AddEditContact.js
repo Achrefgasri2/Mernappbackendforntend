@@ -29,7 +29,7 @@ const AddEditContact = () => {
   const handleChange = (e) => {
     setNewContact({ ...newContact, [e.target.name]: e.target.value });
   };
-  console.log(edit)
+
   return (
     <div>
       

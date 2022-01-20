@@ -33,13 +33,13 @@ router.delete('/:id', controllers.deleteContact)
  * @path : 'http://localhost:6000/api/contacts/:_id'
  * @data : req.params
  */
-   router.get('/_:id', controllers.getContacts)
+   router.get('/:_id', controllers.getContact)
  /**
  * @desc : update one contact by id
  * @method : PUT
  * @path : 'http://localhost:6000/api/contacts/:_id'
  * @data : req.params and req.body
  */
-  router.put('/_:id', controllers.updateContact)
+  router.put('/:_id', controllers.updateContact)
     
 module.exports= router

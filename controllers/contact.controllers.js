@@ -45,26 +45,28 @@ const deleteContact =  async(req, res)=>{
 // get one contact 
 const getContact = async (req , res) =>{
     try {
-        const {_id} = req.params
-        const contactToFind = await Contact.findOne({_id})
+        const { _id } = req.params
+        const contactToFind = await Contact.findOne({ _id })
+        
         res.status(200).send({msg: "I find  the contact.....", contactToFind })
 
     } catch (error) {
-        res.status(400).send({msg: " Can not get contact with this id !!! ", error })  
+        res.status(400).send({msg: " Can not get contact with this id !!! ", error }) 
+       
     }
 }
 // update contact
 const updateContact =async (req , res) =>{
     try {
-        const {_id} = req.params
+        const { _id } = req.params
         const newContact = req.body 
-        let result = await Contact.updateOne({_id}, { $set: {...newContact }})
-        if(result.nModified === 0)
+        let result = await Contact.updateOne({ _id }, { $set: {...newContact }})
+        if(result.modifiedCount === 0 )
         {
             return  res.status(400).send({msg: " Contact already updated  !!! " })  
         }
-        res.status(200).send({msg: "Contact updated succ .....", contactToFind })
-
+        res.status(200).send({msg: " Contact updated succ ..... " })
+    
     } catch (error) {
         res.status(400).send({msg: " Can not update contact with this id !!! ", error })  
     }

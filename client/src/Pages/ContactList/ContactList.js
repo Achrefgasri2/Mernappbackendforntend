@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getContacts } from "../../JS/Actions/Actions";
 import ContactCard from "../../Components/ContactCard/ContactCard";
-
+import './ContactList.css'
 const ContactList = () => {
   const contactsToFind = useSelector(
     (state) => state.contactReducer.contactsToFind
@@ -15,7 +15,7 @@ const ContactList = () => {
   return load ? (
     <h2>loading</h2>
   ) : (
-    <div>
+    <div className="contactlist">
       { contactsToFind.map((contact) => (
         <ContactCard contact={contact} key={contact.id} />
       ))}

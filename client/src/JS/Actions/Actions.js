@@ -18,7 +18,7 @@ import {
 export const getContacts = () => async (dispatch) => {
   dispatch({ type: GET_CONTACTS_LOAD });
   try {
-    let result = await axios.get(`/api/contacts/`);
+    let result = await axios.get(`api/contacts/`);
     dispatch({
       type: GET_CONTACTS_SUCESS,
       payload: result.data.listContacts,
@@ -29,7 +29,7 @@ export const getContacts = () => async (dispatch) => {
 };
 export const addContact = (newContact) => async (dispatch) => {
   try {
-    await axios.post("api/contacts/", newContact);
+    await axios.post("/api/contacts/", newContact);
 
     dispatch(getContacts());
   } catch (error) {
@@ -38,7 +38,7 @@ export const addContact = (newContact) => async (dispatch) => {
 };
 export const deleteContact = (contactId) => async (dispatch) => {
   try {
-    await axios.delete(`api/contacts/${contactId}`);
+    await axios.delete(`/api/contacts/${contactId}`);
     dispatch({ type: DELETE_CONTACT_SUCESS });
     dispatch(getContacts());
   } catch (error) {
@@ -48,7 +48,7 @@ export const deleteContact = (contactId) => async (dispatch) => {
 export const getContact = (contactId) => async (dispatch) => {
   dispatch({ type: GET_CONTACT_LOAD });
   try {
-    let result = await axios.get(`api/contacts/${contactId}`);
+    let result = await axios.get(`/api/contacts/${contactId}`);
     dispatch({ type: GET_CONTACT_SUCESS, payload: result.data.contactToFind });
   } catch (error) {
     dispatch({ type: GET_CONTACT_FAIL, payload: error.response.data });
@@ -64,9 +64,7 @@ export const toggleFalse = () => {
 
 export const EditContact = (contactId, newContact) => async (dispatch) => {
   try {
-    console.log(contactId)
-    await axios.put(`api/contacts/${contactId}`, newContact);
-    
+    await axios.put(`/api/contacts/${contactId}`, newContact);
     dispatch({ type: EDIT_CONTACT_SUCESS });
     dispatch(getContacts());
     window.location.replace("/");
